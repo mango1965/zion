@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'email_token', 'verified'
     ];
 
     /**
@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * メール確認が完了したら更新
+     */
+    public function verified()
+    {
+        $this->email_token = null;
+        $this->verified = 1;
+        $this->status = 1;
+        $this->save();
+    }
 }

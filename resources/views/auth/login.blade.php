@@ -8,6 +8,9 @@
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
+                    @if(Session::has('message'))
+                        <div class="alert alert-info">{{Session::get('message')}}</div>
+                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 

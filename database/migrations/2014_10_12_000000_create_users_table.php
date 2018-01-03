@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->string('email_token')->nullable();    # Add for mail confirmation.
+            $table->tinyInteger('verified')->default(0);  # Add for mail confirmation.
+            $table->tinyInteger('status')->default(0);    # Add for mail confirmation.
             $table->timestamps();
         });
     }
